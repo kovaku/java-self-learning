@@ -10,9 +10,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.IntConsumer;
 import java.util.stream.IntStream;
+import org.github.kovaku.BaseTest;
 import org.testng.annotations.Test;
 
-public class ConcurrencyTest {
+public class ThreadsTest extends BaseTest {
 
   private static final String THREAD_NAME = "MyThread";
   private static Integer iteratorForSyncronizedAccess = 0;

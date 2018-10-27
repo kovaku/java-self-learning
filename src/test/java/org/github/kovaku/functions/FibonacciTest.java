@@ -1,9 +1,12 @@
 package org.github.kovaku.functions;
 
 import java.util.function.Function;
+import org.github.kovaku.BaseTest;
+import org.springframework.stereotype.Component;
 import org.testng.annotations.Test;
 
-public class FibonacciTest {
+@Component("fibonacci")
+public class FibonacciTest extends BaseTest {
 
   public Function<Integer, Long> fibonacciRecursive = new Function<>() {
     @Override

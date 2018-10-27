@@ -5,15 +5,18 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.stream.Stream;
+import org.github.kovaku.BaseTest;
 import org.github.kovaku.functions.FibonacciTest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
 
-public class CompletableFutureTest {
+public class CompletableFutureTest extends BaseTest {
 
   private static final Integer TEST_INTEGER = 40;
   private static final Long EXPECTED_TEST_RESULT = 102334155L;
 
-  private FibonacciTest fibonacci = new FibonacciTest();
+  @Autowired
+  private FibonacciTest fibonacci;
 
   @Test(description = "Concurrency - Testing the CompletableFuture feature")
   public void testCompletableFuture() throws ExecutionException, InterruptedException {
