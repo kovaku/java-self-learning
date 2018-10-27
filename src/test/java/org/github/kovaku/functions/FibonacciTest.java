@@ -1,12 +1,11 @@
 package org.github.kovaku.functions;
 
-import org.testng.annotations.Test;
-
 import java.util.function.Function;
+import org.testng.annotations.Test;
 
 public class FibonacciTest {
 
-  private Function<Integer, Long> fibonacciRecursive = new Function<Integer, Long>() {
+  public Function<Integer, Long> fibonacciRecursive = new Function<>() {
     @Override
     public Long apply(Integer i) {
       if (i == 0 || i == 1) {
@@ -17,7 +16,7 @@ public class FibonacciTest {
     }
   };
 
-  private Function<Integer, Long> fibonacciIterative = i -> {
+  public Function<Integer, Long> fibonacciIterative = i -> {
     int ii = 0;
     Long previous, next = 1L, result = 0L;
     while (ii++ < i) {
@@ -27,6 +26,19 @@ public class FibonacciTest {
     }
     return result;
   };
+
+  public Function<Integer, Long> fibonacciWithTempArray = i -> fib(i, new Long[i + 1]);
+
+  private Long fib(Integer i, Long[] intArray) {
+    if (intArray[i] == null) {
+      if (i == 0 || i == 1) {
+        intArray[i] = i.longValue();
+      } else {
+        intArray[i] = fib(i - 1, intArray) + fib(i - 2, intArray);
+      }
+    }
+    return intArray[i];
+  }
 
   @Test
   public void fibonacciRecursiveTest() {
@@ -40,21 +52,6 @@ public class FibonacciTest {
 
   @Test
   public void fibonacciRecursiveWithTempArrayTest() {
-    assert fibonacciRecursiveWithTempArray(40) == 102334155;
-  }
-
-  private Long fibonacciRecursiveWithTempArray(Integer i) {
-    return fib(i, new Long[i + 1]);
-  }
-
-  private Long fib(Integer i, Long[] intArray) {
-    if (intArray[i] == null) {
-      if (i == 0 || i == 1) {
-        intArray[i] = i.longValue();
-      } else {
-        intArray[i] = fib(i - 1, intArray) + fib(i - 2, intArray);
-      }
-    }
-    return intArray[i];
+    assert fibonacciWithTempArray.apply(40) == 102334155;
   }
 }
