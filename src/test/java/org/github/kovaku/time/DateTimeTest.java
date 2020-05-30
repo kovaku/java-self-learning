@@ -28,17 +28,17 @@ import org.github.kovaku.functions.FibonacciTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
 
-public class DataTimeTest extends BaseTest {
+public class DateTimeTest extends BaseTest {
 
-  private static final Logger LOGGER = Logger.getLogger(DataTimeTest.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(DateTimeTest.class.getName());
 
-  @Autowired
-  private FibonacciTest fibonacci;
+    @Autowired
+    private FibonacciTest fibonacci;
 
-  @Test(description = "Time - Measure the running time of a function")
-  public void testTime() {
-    Duration durationRecursive = getExecutionTime(40, fibonacci.fibonacciRecursive);
-    LOGGER.info("The execution time was in nanos: " + durationRecursive.getNano());
+    @Test(description = "Time - Measure the running time of a function")
+    public void testTime() {
+        Duration durationRecursive = getExecutionTime(40, fibonacci.fibonacciRecursive);
+        LOGGER.info("The execution time was in nanos: " + durationRecursive.getNano());
   }
 
   @Test(description = "Time and Date - Converting between types - Java 7")
